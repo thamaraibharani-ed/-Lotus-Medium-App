@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Blogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h3 class="text-center text-danger">🌸 All blogs 🌸</h3>
+
+    <!-- CREATE BLOG -->
+    <form action="/add" method="POST" class="card p-3 mt-3">
+        <input name="title" class="form-control mb-2" placeholder="Blog Title">
+        <textarea name="content" class="form-control mb-2" placeholder="Blog Content"></textarea>
+        <button class="btn btn-success">Create blogs </button>
+    </form>
+
+    <!-- SHOW BLOGS -->
+    {% for blog in blogs %}
+    <div class="card mt-3 p-3">
+        <h5>{{ blog[1] }}</h5>
+        <p>{{ blog[2] }}</p>
+
+        <a href="/edit/{{ blog[0] }}" class="btn btn-warning btn-sm">Edit</a>
+        <a href="/delete/{{ blog[0] }}" class="btn btn-danger btn-sm">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
